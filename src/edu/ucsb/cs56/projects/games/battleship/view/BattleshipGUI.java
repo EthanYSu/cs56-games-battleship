@@ -483,8 +483,10 @@ public class BattleshipGUI extends JFrame{
     public void makeMove(){board.makeMove();}
     public boolean getPlayersTurn(){ return board.getPlayersTurn();}
     public int getLastMove(){ return board.getLastMove();}
+    public boolean getIsAudioMuted(){return board.getIsAudioMuted();}
     public ArrayList<Integer> getEnemyBoats() {return board.getEnemyBoats();}
-    public void playAudioFile(URL audioURL){    board.playAudioFile(audioURL);}
+    public void playAudioFile(URL audioURL){ board.playAudioFile(audioURL);}
+    public void loopAudioFile(URL audioURL){ board.loopAudioFile(audioURL);}
     public int shiftToPlayerGrid(int loc){return board.shiftToPlayerGrid(loc);}
     public void addShot(int shot){ board.addShot(shot);}
     public String hitPlayer(int shot){ return board.hitPlayer(shot);}

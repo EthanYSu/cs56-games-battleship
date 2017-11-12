@@ -7,6 +7,8 @@ import java.net.URL;
 import java.io.*;
 import javax.sound.sampled.*;
 
+import static javax.sound.sampled.Clip.LOOP_CONTINUOUSLY;
+
 public class GameGrid extends JComponent{
     public int width;
     public int height;
@@ -280,6 +282,10 @@ public class GameGrid extends JComponent{
     public int getLastMove(){
         return this.lastMove;
     }
+
+    public void setIsAudioMuted(boolean isMuted){ this.audio = isMuted;}
+
+    public boolean getIsAudioMuted(){return this.audio;}
            /**
          * Returns whether a shot from the player against the enemy is a "HIT" or a "MISS".
          * @param shot The player's shot.
@@ -336,6 +342,18 @@ public class GameGrid extends JComponent{
         } catch(Exception e) {
             System.err.println(e);
         } 
+    }
+    public void loopAudioFile(URL audioURL){
+        try{
+
+            AudioInputStream loopStream = AudioSystem.getAudioInputStream(audioURL);
+            Clip clip = AudioSystem.getClip();
+            clip.open(loopStream);
+            clip.loop(LOOP_CONTINUOUSLY);
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
     }
 
     public class mouseMove implements MouseMotionListener{
